@@ -23,6 +23,16 @@
 
 AI 只负责提出受约束的参数候选，不直接发送任意 PWM、压力或执行器命令。实物调参必须明确授权，最终安全限制必须由设备端独立执行。
 
+## AI 调参实例
+
+下面是一次真实串口调参过程：Codex 独占连接控制器，重新建立基准状态，读取多通道实验数据，并根据每轮结果逐步调整 PID 参数。
+
+<p align="center">
+  <img src="docs/images/ai-parameter-tuning-example.jpg" alt="Codex 通过串口读取多通道压力数据并逐轮调整 PID 参数" width="720">
+</p>
+
+图片展示的是工作流程实例，具体命令、通道数量和安全边界应按目标设备配置。
+
 ## 使用
 
 将 [`skills/embedded-serial-vofa-ai-tuning`](skills/embedded-serial-vofa-ai-tuning) 安装到 Skills 目录，然后提出：
