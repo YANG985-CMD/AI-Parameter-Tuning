@@ -1,25 +1,34 @@
 # AI Parameter Tuning
 
-面向嵌入式控制器的串口遥测与安全 AI 调参 Skill，提炼自 STM32H743 + FreeRTOS 实物工程。
+一个面向通用嵌入式控制器的串口 Skill，提供 VOFA+ 曲线显示和安全 AI 调参。
+
+## 两种模式
+
+同一个串口一次只能由一个软件连接：
+
+- **VOFA+ 模式**：VOFA+ 独占串口，通过 JustFloat 实时显示参数曲线。
+- **AI 调参模式**：先关闭 VOFA+，再由 Codex 管理的串口客户端独占连接，采集实验数据并下发受限参数。
+
+这两种模式不能同时连接。需要同时工作时，应增加第二个串口/USB CDC 接口，不能默认使用虚拟串口分流。
 
 ## Skill
 
 ### `embedded-serial-vofa-ai-tuning`
 
-- 用 VOFA+ JustFloat 实时显示角度、压力、PWM 等曲线。
-- 用版本化遥测帧、串口命令和实验指标支持 AI 调参。
-- 内置命令白名单、参数范围、故障停机、掉线保护和回退流程。
-- 支持 STM32 HAL、UART DMA、FreeRTOS，以及 STM32H7 D-Cache 注意事项。
-- 附带可复用的 Python 帧解析器、受限命令生成器和离线测试。
+- 通道数量、字段和采样周期均可配置。
+- 支持版本化遥测、命令白名单、参数边界、故障停机、掉线保护和回退。
+- 适用于 STM32、ESP32、Arduino、NXP、TI C2000、RP2040、Zephyr、FreeRTOS、RT-Thread、裸机及 Linux 嵌入式设备等平台。
+- 提供通用协议核心和平台适配层设计，STM32 HAL/DMA/D-Cache 只是其中一个参考实现。
+- 附带 Python JustFloat 帧解析器、受限命令生成器和离线测试。
 
-这个 Skill 不会默认控制实物，也不会允许 AI 直接发送任意 PWM/压力命令。实物调参必须由用户明确授权，并由固件独立执行安全限制。
+AI 只负责提出受约束的参数候选，不直接发送任意 PWM、压力或执行器命令。实物调参必须明确授权，最终安全限制必须由设备端独立执行。
 
 ## 使用
 
-将 [`skills/embedded-serial-vofa-ai-tuning`](skills/embedded-serial-vofa-ai-tuning) 安装到 Codex Skills 目录，然后提出例如：
+将 [`skills/embedded-serial-vofa-ai-tuning`](skills/embedded-serial-vofa-ai-tuning) 安装到 Skills 目录，然后提出：
 
 ```text
-使用 $embedded-serial-vofa-ai-tuning 给我的 STM32 控制器增加 VOFA+ 曲线遥测。
+使用 $embedded-serial-vofa-ai-tuning 为我的控制器增加 VOFA+ 曲线遥测。
 使用 $embedded-serial-vofa-ai-tuning 设计一个带参数边界和故障停机的 AI PID 调参流程。
 ```
 
@@ -29,4 +38,4 @@
 python -m unittest discover -s tests -v
 ```
 
-来源工程保持不变；仓库中保存的是通用化协议、工作流和工具，不是整套应用固件。
+Skill 提炼自真实项目，但仓库内容已经平台无关化，不包含整套应用固件。

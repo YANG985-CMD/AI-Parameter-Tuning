@@ -1,4 +1,4 @@
 interface:
   display_name: "Embedded Serial VOFA AI Tuning"
-  short_description: "Stream VOFA curves and tune embedded controls safely."
-  default_prompt: "Use $embedded-serial-vofa-ai-tuning to implement or review VOFA+ telemetry and bounded AI parameter tuning over a serial link."
+  short_description: "Use VOFA or AI tuning on one embedded serial port."
+  default_prompt: "Use $embedded-serial-vofa-ai-tuning to implement portable embedded serial communication with mutually exclusive VOFA+ plotting and safe AI parameter-tuning modes."
