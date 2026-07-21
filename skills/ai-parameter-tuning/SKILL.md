@@ -18,9 +18,10 @@ Only one host may own the serial port at a time. Never instruct users to connect
 2. Choose exactly one active host mode and a versioned protocol profile. Do not assume a fixed channel count. Read [protocol.md](references/protocol.md).
 3. Implement the portable core and a thin platform adapter. Follow [embedded-integration.md](references/embedded-integration.md); use STM32/HAL only as one example.
 4. For AI tuning or any command that can move hardware, apply [ai-tuning-safety.md](references/ai-tuning-safety.md) before opening the port.
-5. Use `scripts/serial_protocol.py` for host-side JustFloat parsing and bounded command construction. Extend its policy for the target controller instead of bypassing it.
-6. Test parsers, framing, limits, timeouts, fault exits, and dry-run command generation without hardware first.
-7. Require explicit user authorization before a live hardware run. Start in `IDLE`, apply one bounded candidate at a time, monitor every frame, and send `IDLE` in `finally`.
+5. For VOFA+ manual tuning, adapt `assets/vofa-manual-tuning-example.json`, run `scripts/generate_vofa_manual_tuning.py`, and follow [vofa-manual-tuning.md](references/vofa-manual-tuning.md).
+6. Use `scripts/serial_protocol.py` for host-side JustFloat parsing and bounded command construction. Extend its policy for the target controller instead of bypassing it.
+7. Test parsers, framing, limits, timeouts, fault exits, and dry-run command generation without hardware first.
+8. Require explicit user authorization before a live hardware run. Start in `IDLE`, apply one bounded candidate at a time, monitor every frame, and send `IDLE` in `finally`.
 
 ## VOFA+ lane
 
@@ -33,6 +34,7 @@ Only one host may own the serial port at a time. Never instruct users to connect
 - Bind VOFA+ buttons, sliders, or parameter controls only to documented, allowlisted commands.
 - Provide explicit apply, restore, and safe-stop controls; validate every value again on the device.
 - Keep device replies binary-framed or suppress ASCII echo while JustFloat plotting is active.
+- Generate a concrete VOFA+ setup sheet with `scripts/generate_vofa_manual_tuning.py`; do not stop at a prose recommendation.
 
 ## AI-tuning lane
 

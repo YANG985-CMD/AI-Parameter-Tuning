@@ -17,6 +17,10 @@
 ```
 
 ```text
+使用 $ai-parameter-tuning 根据我的设备命令和参数范围，生成 VOFA+ 滑动条、按钮和手动调参配置表。
+```
+
+```text
 使用 $ai-parameter-tuning 检查我的串口通信代码，并改造成适合 AI 调参的协议。
 ```
 
@@ -30,7 +34,7 @@
 
 两种模式是因为同一个串口一次只能由一个软件连接：
 
-- **VOFA+ 模式**：VOFA+ 独占串口，通过 JustFloat 实时显示参数曲线。
+- **VOFA+ 模式**：VOFA+ 独占串口，通过 JustFloat 实时显示参数曲线，并通过按钮、滑动条和参数绑定手动调参。
 - **AI 调参模式**：先关闭 VOFA+，再由 Codex 管理的串口客户端独占连接，采集实验数据并下发受限参数。
 
 这两种模式不能同时连接。需要同时工作时，应增加第二个串口/USB CDC 接口，不能默认使用虚拟串口分流。
@@ -44,9 +48,10 @@
 </p>
 
 - VOFA+ 官网及下载地址：[https://www.vofa.plus](https://www.vofa.plus/)
-- 第一次使用建议先阅读：[VOFA+ 官方入门文档](https://www.vofa.plus/docs/learning/)
+- 第一次使用建议先阅读：[VOFA+ 官方入门文档](https://www.vofa.plus/docs/learning/)和[数据、命令、参数说明](https://www.vofa.plus/docs/learning/start/data_cmd_parameter/)
 - 手动调参时，先配置与设备一致的串口参数和 JustFloat 通道，再将按钮或参数控件绑定到设备支持的调参命令。
 - 建议提供“应用参数”“恢复参数”和“停止输出”等明确操作，并继续由设备端检查参数范围。
+- Skill 内置 `generate_vofa_manual_tuning.py`，可根据参数清单生成 VOFA+ 命令、滑动条范围和按钮配置表。
 
 VOFA+ 模式下由 VOFA+ 独占串口；切换到 AI 调参前，需要先断开 VOFA+。
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "AI Parameter Tuning"
-  short_description: "Plot with VOFA or tune controls manually and with AI."
-  default_prompt: "Use $ai-parameter-tuning to implement portable embedded serial communication with mutually exclusive VOFA+ plotting and manual tuning, or safe AI parameter-tuning modes."
+  short_description: "Plot and manually or automatically tune embedded controls."
+  default_prompt: "Use $ai-parameter-tuning to implement JustFloat plotting, generate a concrete VOFA+ manual-tuning setup, or run safe AI parameter tuning for an embedded controller."

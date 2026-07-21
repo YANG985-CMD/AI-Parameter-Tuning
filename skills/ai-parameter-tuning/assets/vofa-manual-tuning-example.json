@@ -1,0 +1,40 @@
+{
+  "profile_name": "Generic PID Manual Tuning",
+  "baud": 115200,
+  "line_ending": "CRLF",
+  "controls": [
+    {
+      "name": "Kp",
+      "widget": "slider",
+      "command": "PID_KP %f",
+      "minimum": 0.0,
+      "maximum": 20.0,
+      "step": 0.1,
+      "default": 1.0
+    },
+    {
+      "name": "Ki",
+      "widget": "slider",
+      "command": "PID_KI %f",
+      "minimum": 0.0,
+      "maximum": 5.0,
+      "step": 0.01,
+      "default": 0.0
+    },
+    {
+      "name": "Apply parameters",
+      "widget": "button",
+      "command": "APPLY"
+    },
+    {
+      "name": "Restore parameters",
+      "widget": "button",
+      "command": "RESTORE"
+    },
+    {
+      "name": "Safe stop",
+      "widget": "button",
+      "command": "IDLE"
+    }
+  ]
+}
