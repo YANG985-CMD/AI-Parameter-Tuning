@@ -7,21 +7,21 @@
 第一次使用时，在 Codex 中直接发送：
 
 ```text
-请从 https://github.com/YANG985-CMD/AI-Parameter-Tuning 安装 embedded-serial-vofa-ai-tuning Skill。
+请从 https://github.com/YANG985-CMD/AI-Parameter-Tuning 安装 AI Parameter Tuning Skill。
 ```
 
 安装后，根据需要发送下面任一指令：
 
 ```text
-使用 $embedded-serial-vofa-ai-tuning 为我的控制器增加 VOFA+ JustFloat 曲线显示。
+使用 $ai-parameter-tuning 为我的控制器增加 VOFA+ JustFloat 曲线显示。
 ```
 
 ```text
-使用 $embedded-serial-vofa-ai-tuning 检查我的串口通信代码，并改造成适合 AI 调参的协议。
+使用 $ai-parameter-tuning 检查我的串口通信代码，并改造成适合 AI 调参的协议。
 ```
 
 ```text
-我已经关闭 VOFA+。使用 $embedded-serial-vofa-ai-tuning 连接我的控制器，先读取数据并建立基准，再在安全范围内逐轮优化 PID 参数。
+我已经关闭 VOFA+。使用 $ai-parameter-tuning 连接我的控制器，先读取数据并建立基准，再在安全范围内逐轮优化 PID 参数。
 ```
 
 需要同时提供串口号、波特率、设备代码或协议说明时，直接把它们和指令一起发给 Codex。
@@ -37,7 +37,7 @@
 
 ## Skill
 
-### `embedded-serial-vofa-ai-tuning`
+### AI Parameter Tuning
 
 - 通道数量、字段和采样周期均可配置。
 - 支持版本化遥测、命令白名单、参数边界、故障停机、掉线保护和回退。

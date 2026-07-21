@@ -1,4 +1,0 @@
-interface:
-  display_name: "Embedded Serial VOFA AI Tuning"
-  short_description: "Use VOFA or AI tuning on one embedded serial port."
-  default_prompt: "Use $embedded-serial-vofa-ai-tuning to implement portable embedded serial communication with mutually exclusive VOFA+ plotting and safe AI parameter-tuning modes."

@@ -4,7 +4,7 @@ import sys
 import unittest
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).parents[1] / "skills" / "embedded-serial-vofa-ai-tuning" / "scripts"
+SCRIPT_DIR = Path(__file__).parents[1] / "skills" / "ai-parameter-tuning" / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 from serial_protocol import JustFloatParser, ProtocolError, TAIL, build_command

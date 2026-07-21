@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Parameter Tuning"
+  short_description: "Use VOFA or AI tuning on one embedded serial port."
+  default_prompt: "Use $ai-parameter-tuning to implement portable embedded serial communication with mutually exclusive VOFA+ plotting and safe AI parameter-tuning modes."

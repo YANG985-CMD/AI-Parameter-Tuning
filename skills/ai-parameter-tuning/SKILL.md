@@ -1,9 +1,9 @@
 ---
-name: embedded-serial-vofa-ai-tuning
+name: ai-parameter-tuning
 description: "Build, adapt, debug, or review portable embedded serial communication with two mutually exclusive host modes: VOFA+ JustFloat curve display or Codex/AI-assisted controller parameter tuning. Use for MCU, DSP, SoC, Arduino, bare-metal, RTOS, Linux-device, UART/USB-serial telemetry, command protocols, experiment capture, bounded parameter proposals, safety interlocks, or converting an existing device protocol into a reusable host-device workflow."
 ---
 
-# Embedded Serial VOFA AI Tuning
+# AI Parameter Tuning
 
 Implement two mutually exclusive modes over one serial port:
 
