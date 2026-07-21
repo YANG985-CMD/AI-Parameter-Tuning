@@ -1,6 +1,6 @@
 # AI Parameter Tuning
 
-一个面向通用嵌入式控制器的串口 Skill，提供 VOFA+ 曲线显示和安全 AI 调参。
+一个面向通用嵌入式控制器的串口 Skill，提供 VOFA 曲线显示和安全 AI 调参。
 
 ## 两种模式
 
