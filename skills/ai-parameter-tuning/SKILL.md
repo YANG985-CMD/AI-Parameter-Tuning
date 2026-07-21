@@ -1,13 +1,13 @@
 ---
 name: ai-parameter-tuning
-description: "Build, adapt, debug, or review portable embedded serial communication with two mutually exclusive host modes: VOFA+ JustFloat curve display or Codex/AI-assisted controller parameter tuning. Use for MCU, DSP, SoC, Arduino, bare-metal, RTOS, Linux-device, UART/USB-serial telemetry, command protocols, experiment capture, bounded parameter proposals, safety interlocks, or converting an existing device protocol into a reusable host-device workflow."
+description: "Build, adapt, debug, or review portable embedded serial communication with two mutually exclusive host modes: VOFA+ JustFloat curve display and manual parameter tuning, or Codex/AI-assisted controller parameter tuning. Use for MCU, DSP, SoC, Arduino, bare-metal, RTOS, Linux-device, UART/USB-serial telemetry, VOFA controls, command protocols, experiment capture, bounded parameter proposals, safety interlocks, or converting an existing device protocol into a reusable host-device workflow."
 ---
 
 # AI Parameter Tuning
 
 Implement two mutually exclusive modes over one serial port:
 
-1. Connect VOFA+ and stream deterministic JustFloat telemetry for curve display.
+1. Connect VOFA+ to display deterministic JustFloat telemetry and manually tune parameters from bound controls.
 2. Disconnect VOFA+, connect the Codex-managed host client, and run bounded, observable AI-assisted tuning experiments.
 
 Only one host may own the serial port at a time. Never instruct users to connect VOFA+ and Codex to the same port concurrently, and never interleave the two modes.
@@ -30,6 +30,9 @@ Only one host may own the serial port at a time. Never instruct users to connect
 - Keep frame size and channel schema synchronized between firmware, VOFA+, and host tools.
 - Include a sequence number and protocol version for machine capture where possible.
 - Rate-limit telemetry outside control ISRs; count dropped or busy transmissions.
+- Bind VOFA+ buttons, sliders, or parameter controls only to documented, allowlisted commands.
+- Provide explicit apply, restore, and safe-stop controls; validate every value again on the device.
+- Keep device replies binary-framed or suppress ASCII echo while JustFloat plotting is active.
 
 ## AI-tuning lane
 

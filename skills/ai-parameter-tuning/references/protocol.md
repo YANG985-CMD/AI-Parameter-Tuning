@@ -15,10 +15,12 @@ Treat channel count and field order as a versioned schema. Search for the tail i
 
 Use one serial port owner at a time:
 
-- **VOFA+ mode:** VOFA+ owns the port and receives JustFloat frames for live plots. Do not run the Codex/AI serial client.
+- **VOFA+ mode:** VOFA+ owns the port, receives JustFloat frames for live plots, and may send allowlisted manual tuning commands from bound controls. Do not run the Codex/AI serial client.
 - **AI tuning mode:** Close VOFA+, then let the Codex-managed client own the port, receive the versioned experiment stream, and send bounded commands.
 
 The AI client may plot or save its own curves, but it must not assume VOFA+ can share the open port. Simultaneous operation requires a second UART/USB CDC endpoint or an intentional framed multiplexer with one clear control owner.
+
+For VOFA+ manual tuning, bind each button, slider, or parameter field to one documented device command. Keep command terminators and units explicit. Provide apply, restore, and safe-stop actions, and enforce the same bounds in firmware. Do not echo unframed ASCII replies into the device-to-host JustFloat stream.
 
 The source project contains multiple valid profiles that illustrate why schemas must be configurable:
 

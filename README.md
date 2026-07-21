@@ -35,11 +35,27 @@
 
 这两种模式不能同时连接。需要同时工作时，应增加第二个串口/USB CDC 接口，不能默认使用虚拟串口分流。
 
+## VOFA+ 曲线显示与手动调参
+
+连接 VOFA+ 后，可以实时查看多通道参数曲线，也可以用按钮、滑动条和参数控件手动发送调参指令，边观察曲线边调整 PID 等控制参数。
+
+<p align="center">
+  <img src="docs/images/vofa-curve-and-manual-tuning.png" alt="VOFA+ 实时显示多通道参数曲线" width="900">
+</p>
+
+- VOFA+ 官网及下载地址：[https://www.vofa.plus](https://www.vofa.plus/)
+- 第一次使用建议先阅读：[VOFA+ 官方入门文档](https://www.vofa.plus/docs/learning/)
+- 手动调参时，先配置与设备一致的串口参数和 JustFloat 通道，再将按钮或参数控件绑定到设备支持的调参命令。
+- 建议提供“应用参数”“恢复参数”和“停止输出”等明确操作，并继续由设备端检查参数范围。
+
+VOFA+ 模式下由 VOFA+ 独占串口；切换到 AI 调参前，需要先断开 VOFA+。
+
 ## Skill
 
 ### AI Parameter Tuning
 
 - 通道数量、字段和采样周期均可配置。
+- 支持 VOFA+ 实时曲线显示和上位机手动调参。
 - 支持版本化遥测、命令白名单、参数边界、故障停机、掉线保护和回退。
 - 适用于 STM32、ESP32、Arduino、NXP、TI C2000、RP2040、Zephyr、FreeRTOS、RT-Thread、裸机及 Linux 嵌入式设备等平台。
 - 提供通用协议核心和平台适配层设计，STM32 HAL/DMA/D-Cache 只是其中一个参考实现。
